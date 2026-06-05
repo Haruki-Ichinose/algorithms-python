@@ -22,13 +22,37 @@ A1 A2 ... AN
 4
 """
 
+
 def main():
     n = int(input())
     a = list(map(int, input().split()))
 
+    # Python の組み込み関数を使うのが一番読みやすい。
+    # set は重複を消すデータ構造なので、len(set(a)) で異なる値の個数になる。
     print(sum(a))
     print(max(a))
     print(len(set(a)))
+
+
+def another_answer_with_loop():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # 別解:
+    # 組み込み関数を使わず、ループで合計、最大値、出現済み集合を更新する。
+    total = 0
+    maximum = a[0]
+    seen = set()
+
+    for x in a:
+        total += x
+        maximum = max(maximum, x)
+        seen.add(x)
+
+    print(total)
+    print(maximum)
+    print(len(seen))
+
 
 if __name__ == "__main__":
     main()

@@ -29,44 +29,40 @@ XQ
 1 4
 0 2 5
 6
-
-
-模範解答:
-- 値ごとに、出現した位置のリストを持つ
-- 通常の dict を使い、初めて出る値なら空リストを作る
-
-別解:
-- collections.defaultdict(list) を使うと、空リストを作る処理を省ける
 """
 
 from collections import defaultdict
-
-
-def build_positions_with_dict(a):
-    positions = {}
-
-    for i, x in enumerate(a):
-        if x not in positions:
-            positions[x] = []
-        positions[x].append(i)
-
-    return positions
-
-
-def build_positions_with_defaultdict(a):
-    positions = defaultdict(list)
-
-    for i, x in enumerate(a):
-        positions[x].append(i)
-
-    return positions
 
 
 def main():
     n = int(input())
     a = list(map(int, input().split()))
 
-    positions = build_positions_with_dict(a)
+    positions = defaultdict(list)
+
+    # enumerate(a) は (index, value) を順番に取り出せる。
+    # positions[x] に、値 x が出てきた位置 i を追加していく。
+    for i, x in enumerate(a):
+        positions[x].append(i)
+
+    q = int(input())
+    for _ in range(q):
+        x = int(input())
+        print(*positions[x])
+
+
+def another_answer_with_dict():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # 別解:
+    # 通常の dict を使う場合は、初めて出る値なら空リストを作る。
+    positions = {}
+
+    for i, x in enumerate(a):
+        if x not in positions:
+            positions[x] = []
+        positions[x].append(i)
 
     q = int(input())
     for _ in range(q):
@@ -75,6 +71,26 @@ def main():
             print(*positions[x])
         else:
             print()
+
+
+def another_answer_by_scanning_each_query():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # 別解:
+    # 事前計算せず、質問ごとに A 全体を走査する。
+    q = int(input())
+    for _ in range(q):
+        x = int(input())
+        result = []
+
+        # 事前計算せず、質問ごとに A 全体を見る。
+        # 書き方は単純だが、毎回 O(N) かかる。
+        for i, value in enumerate(a):
+            if value == x:
+                result.append(i)
+
+        print(*result)
 
 
 if __name__ == "__main__":

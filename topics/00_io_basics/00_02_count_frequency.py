@@ -16,23 +16,35 @@ A1 A2 ... AN
 3
 1
 2
-
-模範解答:
-- 数えたい値だけを辞書に用意する
-- A を1つずつ見て、辞書にある値だけカウントする
-
-別解:
-- 長さ4以上のリストを使って、counts[x] に個数を入れる
-- collections.Counter を使う
 """
 
 from collections import Counter
 
 
-def solve_with_dict(a):
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # Counter は「値 -> 出現回数」の辞書のように使える。
+    # 今回は 1, 2, 3 の回数だけ知りたいので、この順に取り出す。
+    counts = Counter(a)
+
+    print(counts[1])
+    print(counts[2])
+    print(counts[3])
+
+
+def another_answer_with_dict():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # 別解:
+    # dict で数えたい値だけを管理する。
     counts = {1: 0, 2: 0, 3: 0}
 
     for x in a:
+        # 今回数えたいのは 1, 2, 3 だけ。
+        # それ以外の値をそのまま counts[x] すると KeyError になる。
         if x in counts:
             counts[x] += 1
 
@@ -41,7 +53,14 @@ def solve_with_dict(a):
     print(counts[3])
 
 
-def solve_with_list(a):
+def another_answer_with_list():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    # 別解:
+    # 値の範囲が小さい場合は、list をカウント配列として使える。
+    # 値が 1, 2, 3 のように小さい整数なら、counts[x] に個数を入れられる。
+    # index 3 まで使うので長さ 4 にする。
     counts = [0] * 4
 
     for x in a:
@@ -51,21 +70,6 @@ def solve_with_list(a):
     print(counts[1])
     print(counts[2])
     print(counts[3])
-
-
-def solve_with_counter(a):
-    counts = Counter(a)
-
-    print(counts[1])
-    print(counts[2])
-    print(counts[3])
-
-
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
-
-    solve_with_dict(a)
 
 
 if __name__ == "__main__":

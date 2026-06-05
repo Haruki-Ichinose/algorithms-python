@@ -17,10 +17,15 @@ A から異なる K 個の要素を選ぶとき、作れる和の最大値を出
 """
 from itertools import combinations
 
+
 def main():
     n, k = map(int, input().split())
     a = list(map(int, input().split()))
 
+    # 確認コメント:
+    # combinations(a, 3) だとサンプルの K=3 に固定される。
+    # 問題では K が入力で与えられるため combinations(a, k) を使う。
+    # tmp = 1 は負の数だけの入力で壊れるので、十分小さい値から始める。
     tmp = 1
     for nums in combinations(a, 3):
         total = sum(nums)

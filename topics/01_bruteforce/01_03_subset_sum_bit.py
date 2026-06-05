@@ -17,16 +17,21 @@ Yes、存在しないなら No を出力する。
 Yes
 """
 
+
 def main():
     n, x = map(int, input().split())
     a = list(map(int, input().split()))
 
+    # 確認コメント:
+    # この実装は 0 個、1 個、2 個を選ぶ場合しか扱えない。
+    # 問題は各要素を選ぶ/選ばないなので、3 個以上を選ぶ組も確認する必要がある。
+    # また、見つからなかった場合に No が出力されない。
     s = {0}
     for i in range(n):
-        for j in range(i+1, n):
+        for j in range(i + 1, n):
             s.add(a[i])
             s.add(a[j])
-            s.add(a[i]+a[j])
+            s.add(a[i] + a[j])
 
     if x in s:
         print("Yes")

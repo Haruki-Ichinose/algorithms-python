@@ -20,23 +20,6 @@ A から異なる2つの要素を選んで作れる和を、重複なしで小�
 - 1 + 5 = 6
 - 3 + 3 = 6
 - 3 + 5 = 8
-
-学び:
-- 二重ループで全ペアを試せる
-- set で和の重複を消せる
-- itertools.combinations を使う別解もある
-
-計算量:
-- 全ペアの列挙: O(N^2)
-- 和のソート: O(K log K), K は作れる和の種類数
-
-模範解答:
-- 添字 i, j を使い、i < j のペアだけを試す
-- set に和を入れて重複を消す
-- sorted で小さい順にして出力する
-
-別解:
-- itertools.combinations(a, 2) で異なる2要素の組を作る
 """
 
 from itertools import combinations
@@ -47,19 +30,8 @@ def main():
     a = list(map(int, input().split()))
 
     sums = set()
-    for i in range(n):
-        for j in range(i + 1, n):
-            sums.add(a[i] + a[j])
 
-    print(*sorted(sums))
-
-
-def model_answer():
-    n = int(input())
-    a = list(map(int, input().split()))
-
-    sums = set()
-
+    # i < j にすると、同じ位置を2回選ばず、同じペアを順番違いで数えない。
     for i in range(n):
         for j in range(i + 1, n):
             sums.add(a[i] + a[j])
@@ -71,12 +43,16 @@ def another_answer_with_combinations():
     n = int(input())
     a = list(map(int, input().split()))
 
+    # 別解:
+    # itertools.combinations で異なる2要素の組を作る。
     sums = set()
 
+    # combinations(a, 2) は、A から異なる2要素を選ぶ全ての組を作る。
     for x, y in combinations(a, 2):
         sums.add(x + y)
 
     print(*sorted(sums))
+
 
 if __name__ == "__main__":
     main()

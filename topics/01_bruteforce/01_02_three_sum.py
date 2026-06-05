@@ -22,9 +22,12 @@ def main():
     n, x = map(int, input().split())
     a = list(map(int, input().split()))
 
+    # 確認コメント:
+    # この break は k ループだけを抜けるため、探索全体は終了しない。
+    # また、最後まで見つからなかった場合に No が出力されない。
     for i in range(n):
-        for j in range(i+1, n):
-            for k in range(j+1, n):
+        for j in range(i + 1, n):
+            for k in range(j + 1, n):
                 if a[i] + a[j] + a[k] == x:
                     print("Yes")
                     break

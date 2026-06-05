@@ -17,25 +17,6 @@ B1 B2 ... BM
 
 出力
 3 5
-
-学び:
-- set で重複を消せる
-- `set_a & set_b` で共通部分を求められる
-- 出力順が必要なら sorted を使う
-
-計算量:
-- set 作成: O(N + M)
-- 共通部分の計算: O(min(N, M)) 程度
-- ソート: O(K log K), K は共通する値の種類数
-
-模範解答:
-- A と B を set に変換する
-- `set_a & set_b` で共通する値を求める
-- sorted で小さい順にして出力する
-
-別解:
-- A を set にして、B の各値が A に含まれるか調べる
-- 見つかった値を set に入れて重複を消す
 """
 
 
@@ -44,17 +25,8 @@ def main():
     a = list(map(int, input().split()))
     b = list(map(int, input().split()))
 
-    set_a = set(a)
-    set_b = set(b)
-
-    print(*sorted(set_a & set_b))
-
-
-def model_answer():
-    n, m = map(int, input().split())
-    a = list(map(int, input().split()))
-    b = list(map(int, input().split()))
-
+    # set 同士の & は共通部分を表す。
+    # 最後に sorted することで、小さい順のリストとして出力できる。
     common = set(a) & set(b)
     print(*sorted(common))
 
@@ -64,6 +36,8 @@ def another_answer_with_membership():
     a = list(map(int, input().split()))
     b = list(map(int, input().split()))
 
+    # 別解:
+    # A を set にして、B の各値が A に含まれるか調べる。
     values = set(a)
     common = set()
 
@@ -72,6 +46,27 @@ def another_answer_with_membership():
             common.add(x)
 
     print(*sorted(common))
+
+
+def another_answer_with_loop_over_set():
+    n, m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    # 別解:
+    # ループで両方の set を見比べる。
+    set_a = set(a)
+    set_b = set(b)
+    common = set()
+
+    # set_a の各値が set_b に含まれるか確認する。
+    # `set_a & set_b` を自分で書くとこの形になる。
+    for x in set_a:
+        if x in set_b:
+            common.add(x)
+
+    print(*sorted(common))
+
 
 if __name__ == "__main__":
     main()
