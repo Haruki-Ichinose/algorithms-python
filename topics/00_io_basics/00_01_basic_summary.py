@@ -22,9 +22,13 @@ A1 A2 ... AN
 4
 """
 
-n = int(input())
-a = list(map(int, input().split()))
+def main():
+    n = int(input())
+    a = list(map(int, input().split()))
 
-print(sum(a))
-print(max(a))
-print(len(set(a)))
+    print(sum(a))
+    print(max(a))
+    print(len(set(a)))
+
+if __name__ == "__main__":
+    main()

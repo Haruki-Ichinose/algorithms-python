@@ -42,7 +42,7 @@ A から異なる2つの要素を選んで作れる和を、重複なしで小�
 from itertools import combinations
 
 
-def my_answer():
+def main():
     n = int(input())
     a = list(map(int, input().split()))
 
@@ -77,11 +77,6 @@ def another_answer_with_combinations():
         sums.add(x + y)
 
     print(*sorted(sums))
-
-
-def main():
-    my_answer()
-
 
 if __name__ == "__main__":
     main()

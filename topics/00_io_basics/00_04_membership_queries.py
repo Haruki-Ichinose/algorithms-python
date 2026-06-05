@@ -46,7 +46,7 @@ No
 """
 
 
-def my_answer():
+def main():
     n = int(input())
     a = list(map(int, input().split()))
     q = int(input())
@@ -86,10 +86,6 @@ def another_answer_with_list():
             print("Yes")
         else:
             print("No")
-
-
-def main():
-    my_answer()
 
 
 if __name__ == "__main__":

@@ -39,7 +39,7 @@ B1 B2 ... BM
 """
 
 
-def my_answer():
+def main():
     n, m = map(int, input().split())
     a = list(map(int, input().split()))
     b = list(map(int, input().split()))
@@ -72,11 +72,6 @@ def another_answer_with_membership():
             common.add(x)
 
     print(*sorted(common))
-
-
-def main():
-    my_answer()
-
 
 if __name__ == "__main__":
     main()
