@@ -52,8 +52,7 @@ def another_answer_with_list():
     n = int(input())
     a = list(map(int, input().split()))
 
-    # 別解:
-    # A を list のまま `x in a` で判定する。
+    # A を list のまま `x in a` で判定する方法。
     # ただし、list の存在判定は毎回 O(N) なので、質問が多いと遅い。
     q = int(input())
     for _ in range(q):

@@ -22,9 +22,9 @@ def main():
     n, x = map(int, input().split())
     a = list(map(int, input().split()))
 
-    # 確認コメント:
-    # この break は k ループだけを抜けるため、探索全体は終了しない。
-    # また、最後まで見つからなかった場合に No が出力されない。
+    # break は一番内側の k ループしか抜けない。
+    # 存在判定では、見つかった時点で探索全体を終え、
+    # 最後まで見つからなければ No を出力する必要がある。
     for i in range(n):
         for j in range(i + 1, n):
             for k in range(j + 1, n):
@@ -37,6 +37,8 @@ def model_answer():
     n, x = map(int, input().split())
     a = list(map(int, input().split()))
 
+    # i < j < k にすることで、異なる3要素の組を重複なく調べる。
+    # 見つかった場合は return で関数を終了する。
     for i in range(n):
         for j in range(i + 1, n):
             for k in range(j + 1, n):
@@ -45,6 +47,7 @@ def model_answer():
                     return
 
     print("No")
+
 
 if __name__ == "__main__":
     main()

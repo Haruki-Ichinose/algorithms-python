@@ -37,9 +37,8 @@ def main():
 
         cost = 0
         for i in range(n - 1):
-            # 確認コメント:
-            # 入力した距離表は d という変数名なので、ここも d を使う。
-            # dist は定義されていないため NameError になる。
+            # 距離表は d という名前で受け取っているため、
+            # 未定義の dist を参照すると NameError になる。
             cost += dist[route[i]][route[i + 1]]
 
         best = min(best, cost)

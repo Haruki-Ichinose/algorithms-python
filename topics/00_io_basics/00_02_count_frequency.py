@@ -38,8 +38,7 @@ def another_answer_with_dict():
     n = int(input())
     a = list(map(int, input().split()))
 
-    # 別解:
-    # dict で数えたい値だけを管理する。
+    # 数える値が決まっている場合は、dict で対象だけを管理できる。
     counts = {1: 0, 2: 0, 3: 0}
 
     for x in a:
@@ -57,7 +56,6 @@ def another_answer_with_list():
     n = int(input())
     a = list(map(int, input().split()))
 
-    # 別解:
     # 値の範囲が小さい場合は、list をカウント配列として使える。
     # 値が 1, 2, 3 のように小さい整数なら、counts[x] に個数を入れられる。
     # index 3 まで使うので長さ 4 にする。

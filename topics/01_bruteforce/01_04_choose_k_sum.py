@@ -22,10 +22,8 @@ def main():
     n, k = map(int, input().split())
     a = list(map(int, input().split()))
 
-    # 確認コメント:
-    # combinations(a, 3) だとサンプルの K=3 に固定される。
-    # 問題では K が入力で与えられるため combinations(a, k) を使う。
-    # tmp = 1 は負の数だけの入力で壊れるので、十分小さい値から始める。
+    # combinations(a, 3) では、選ぶ個数がサンプルの K=3 に固定される。
+    # また、最大値の初期値を 1 にすると、全ての和が負の場合に正しく更新されない。
     tmp = 1
     for nums in combinations(a, 3):
         total = sum(nums)
@@ -38,6 +36,8 @@ def model_answer():
     n, k = map(int, input().split())
     a = list(map(int, input().split()))
 
+    # combinations(a, k) で、A から異なる K 個を選ぶ全組合せを列挙する。
+    # 負の数だけの場合にも対応できるよう、最大値は十分小さい値で初期化する。
     best = -10**18
 
     for nums in combinations(a, k):

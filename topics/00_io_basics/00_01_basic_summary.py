@@ -38,8 +38,7 @@ def another_answer_with_loop():
     n = int(input())
     a = list(map(int, input().split()))
 
-    # 別解:
-    # 組み込み関数を使わず、ループで合計、最大値、出現済み集合を更新する。
+    # 1 回のループで合計、最大値、出現済み集合をまとめて更新する方法。
     total = 0
     maximum = a[0]
     seen = set()

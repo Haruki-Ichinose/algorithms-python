@@ -22,10 +22,10 @@ def main():
     n, x = map(int, input().split())
     a = list(map(int, input().split()))
 
-    # 確認コメント:
-    # この実装は 0 個、1 個、2 個を選ぶ場合しか扱えない。
-    # 問題は各要素を選ぶ/選ばないなので、3 個以上を選ぶ組も確認する必要がある。
-    # また、見つからなかった場合に No が出力されない。
+    # この方法で作れるのは、0 個、1 個、2 個を選んだ和だけ。
+    # 各要素を「選ぶ/選ばない」で決める問題では、3 個以上を選ぶ場合も含めて
+    # 2^N 通りを調べる必要がある。
+    # また、存在判定では最後まで見つからなかった場合に No を出力する。
     s = {0}
     for i in range(n):
         for j in range(i + 1, n):
@@ -41,6 +41,8 @@ def model_answer():
     n, x = map(int, input().split())
     a = list(map(int, input().split()))
 
+    # mask の i bit 目で、A[i] を選ぶかどうかを表す。
+    # 0 から 2^N - 1 まで調べることで、全ての部分集合を列挙できる。
     for mask in range(1 << n):
         total = 0
 
@@ -53,6 +55,7 @@ def model_answer():
             return
 
     print("No")
+
 
 if __name__ == "__main__":
     main()

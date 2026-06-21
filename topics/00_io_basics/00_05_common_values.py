@@ -36,8 +36,7 @@ def another_answer_with_membership():
     a = list(map(int, input().split()))
     b = list(map(int, input().split()))
 
-    # 別解:
-    # A を set にして、B の各値が A に含まれるか調べる。
+    # A を set にして、B の各値が A に含まれるか調べる方法。
     values = set(a)
     common = set()
 
@@ -53,8 +52,7 @@ def another_answer_with_loop_over_set():
     a = list(map(int, input().split()))
     b = list(map(int, input().split()))
 
-    # 別解:
-    # ループで両方の set を見比べる。
+    # ループで両方の set を見比べる方法。
     set_a = set(a)
     set_b = set(b)
     common = set()

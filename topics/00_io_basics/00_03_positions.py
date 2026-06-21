@@ -55,8 +55,7 @@ def another_answer_with_dict():
     n = int(input())
     a = list(map(int, input().split()))
 
-    # 別解:
-    # 通常の dict を使う場合は、初めて出る値なら空リストを作る。
+    # 通常の dict では、初めて出る値に対して空リストを作る必要がある。
     positions = {}
 
     for i, x in enumerate(a):
@@ -77,8 +76,7 @@ def another_answer_by_scanning_each_query():
     n = int(input())
     a = list(map(int, input().split()))
 
-    # 別解:
-    # 事前計算せず、質問ごとに A 全体を走査する。
+    # 事前計算せず、質問ごとに A 全体を走査する方法。
     q = int(input())
     for _ in range(q):
         x = int(input())

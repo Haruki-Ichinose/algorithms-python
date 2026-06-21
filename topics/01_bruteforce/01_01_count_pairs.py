@@ -22,6 +22,9 @@ def main():
     a = list(map(int, input().split()))
 
     count = 0
+
+    # i < j にすることで、同じ位置を選ばず、順番違いの同じペアも数えない。
+    # 全てのペアを調べるため、計算量は O(N^2)。
     for i in range(n):
         for j in range(i + 1, n):
             if a[i] + a[j] <= k:
@@ -36,6 +39,8 @@ def model_answer():
 
     count = 0
 
+    # i < j にすることで、同じ位置を選ばず、順番違いの同じペアも数えない。
+    # 全てのペアを調べるため、計算量は O(N^2)。
     for i in range(n):
         for j in range(i + 1, n):
             if a[i] + a[j] <= k:

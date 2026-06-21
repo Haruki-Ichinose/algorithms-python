@@ -43,8 +43,7 @@ def another_answer_with_combinations():
     n = int(input())
     a = list(map(int, input().split()))
 
-    # 別解:
-    # itertools.combinations で異なる2要素の組を作る。
+    # itertools.combinations で異なる2要素の組を作る方法。
     sums = set()
 
     # combinations(a, 2) は、A から異なる2要素を選ぶ全ての組を作る。

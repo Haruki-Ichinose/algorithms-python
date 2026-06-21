@@ -31,13 +31,12 @@ def main():
     x = int(input())
 
     count = 0
+
+    # A、B、C からそれぞれ1つ選ぶ全パターンを三重ループで試す。
     for i in range(len(a)):
         for j in range(len(b)):
             for k in range(len(c)):
                 if a[i] + b[j] + c[k] == x:
-                    # 確認コメント:
-                    # 正しく数えられている。細かい点として、`count += 1` のように
-                    # 演算子の前後に空白を入れると読みやすい。
                     count +=1
 
     print(count)
