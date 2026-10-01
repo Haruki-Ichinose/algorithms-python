@@ -39,8 +39,3 @@ notes/
 
 **未着手テーマのディレクトリを先に作らない。着手時に `topics/` 配下へ追加する。**
 テーマは `README.md` の 15 項目を優先度順に進める（`03_two_pointers` 以降が未着手）。
-
-## commit message
-
-`種別：日本語の説明`（コロンは**全角**）。Conventional Commits に準拠する。
-**Claude / Codex の署名 trailer（`Co-Authored-By` 等）は付けない。**
